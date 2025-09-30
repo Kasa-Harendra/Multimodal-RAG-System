@@ -6,6 +6,7 @@ import shutil
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed
 from typing import List, Dict, Tuple, Optional
 import time
+import streamlit as st
 
 from .embeddings import TextEmbeddings, get_image_desc, get_images_desc_batch
 from .config import RAGConfig
@@ -26,6 +27,8 @@ def process_input_file(input_file_name: str):
             return PythonLoader(file_path=input_file_name).load()
         elif input_file_name.endswith('.ipynb'):
             return NotebookLoader(path=input_file_name).load()
+        elif input_file_name.endswith('.md'):
+            return TextLoader(file_path=input_file_name).load()
         elif input_file_name.endswith(('.jpg', '.png', '.jpeg')):
             return get_image_desc(input_file_name)
         else:
@@ -230,6 +233,9 @@ def process_docs(session_id, uploaded_files, processed_files: list, existing_db=
         processing_time = time.time() - start_time
         print(f"Processing completed in {processing_time:.2f} seconds")
         print(f"Processed {len(new_processed)} files, created {len(splits)} chunks")
+        
+        if db == None:
+            st.error("DB Creation failed")
         
         return db, processed_files
         

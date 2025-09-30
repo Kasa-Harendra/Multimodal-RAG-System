@@ -58,7 +58,7 @@ st.session_state['session-id'] = consistent_session_id
 
 # Define allowed file types
 ALLOWED_EXTENSIONS = {
-    '.pdf', '.docx', '.png', '.jpg', '.jpeg', '.csv', '.json', '.py', '.ipynb'
+    '.pdf', '.docx', '.png', '.jpg', '.jpeg', '.csv', '.json', '.py', '.ipynb', '.md'
 }
 
 def validate_file_type(uploaded_file):

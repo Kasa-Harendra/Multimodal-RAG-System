@@ -7,3 +7,5 @@ optimize_performan.py
 utils/.env
 utils/email_config.py
 .gitignore
+.streamlit
+app/.streamlit

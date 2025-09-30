@@ -25,11 +25,11 @@ class TextEmbeddings(EmbeddingFunction):
         
         for attempt in range(RAGConfig.MAX_RETRIES):
             try:
+                api_key =  str(st.secrets.get('OLLAMA-API-KEY'))
+                
                 response = session.post(
                     url="https://aihub-vvitu.social/api/ollama-api/embed/",
-                    headers={'API-KEY': str(st.secrets.get('OLLAMA-API-KEY'))},
-                    headers={'API-KEY': str(st.secrets.get('OLLAMA-API-KEY'))},
-        
+                    headers={'API-KEY': api_key},
                     json={
                         'model': 'qwen3-embedding:8b',
                         'input': string
@@ -96,10 +96,12 @@ def get_image_desc(img):
     """Get description for a single image"""
     img_64 = encode_image_to_base64(img)    
     
+    api_key =  str(st.secrets.get('OLLAMA-API-KEY'))
+    
     response = requests.post(
         url="https://aihub-vvitu.social/api/ollama-api/generate/",
         headers={
-            'API-KEY': str(st.secrets.get('OLLAMA-API-KEY'))
+            'API-KEY': api_key
         },
         json={
             "model": "moondream:latest",
