@@ -1,0 +1,9 @@
+__pycache__
+*/__pycache__
+venv/
+BUTTON_FIX_SUMMARY.md
+SIDEBAR_DUPLICATE_FIX.md
+optimize_performan.py
+utils/.env
+utils/email_config.py
+.gitignore
