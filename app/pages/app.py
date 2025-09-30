@@ -115,7 +115,7 @@ def upload_page():
         st.divider()
         
         # Navigation buttons
-        if st.session_state.get('db') is not None:
+        if st.session_state.get('db') is None:
             if st.button("💬 Go to Chat", type="primary", use_container_width=True, key="app_sidebar_chat_btn"):
                 st.session_state['page'] = 'chat'
                 st.rerun()

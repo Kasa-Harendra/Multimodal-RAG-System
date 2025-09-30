@@ -234,7 +234,7 @@ def process_docs(session_id, uploaded_files, processed_files: list, existing_db=
         print(f"Processing completed in {processing_time:.2f} seconds")
         print(f"Processed {len(new_processed)} files, created {len(splits)} chunks")
         
-        if db == None:
+        if db is None:
             st.error("DB Creation failed")
         
         return db, processed_files
